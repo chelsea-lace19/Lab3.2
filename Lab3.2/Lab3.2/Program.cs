@@ -71,40 +71,18 @@ namespace Lab3._2
                     }
                     Console.WriteLine($"\n                                         Total: ${total}");
 
-                    Console.Write("\nWould you like to add more items? (y/n): ");
-                    string answer = Console.ReadLine();
+                    bool validAnswer = false;
 
-                    if (answer == "n")
+                    while (!validAnswer)
                     {
-                        done = true;
+                        Console.Write("\nWould you like to add more items? (y/n): ");
+                        string answer = Console.ReadLine();
 
-                        Console.WriteLine("\nThank you for shopping with us, your checkout summary is below: ");
-                        Console.WriteLine("\n******************************************************************");
-                        Console.WriteLine("\n                       CART SUMMARY                              \n");
-                        Console.WriteLine("\n******************************************************************");
-                        Console.WriteLine("       Item                                      Price");
-                        Console.WriteLine("     ====================================================");
-                        for (int i = 0; i < itemPrice.Count; i++)
-                        {
-                            Console.WriteLine($"     {selectedItems[i]}\t\t\t\t\t${itemPrice[i]} ");
-                            average = total / selectedItems.Count;
-                          
-                        }
-                        Console.WriteLine($"\n                                         Total: ${total}");
-                        average = Math.Round(average,2);
-                        Console.WriteLine($"Your average price today was: ${average}!");
-                    }
-                    else if (answer == "y")
-                    {
-                        done = false;
-                    }
-                    else
-                    {
-                        Console.Write("Please only enter \"y\" or \"n\": ");
-                        answer = Console.ReadLine();
+
                         if (answer == "n")
                         {
                             done = true;
+                            validAnswer = true;
 
                             Console.WriteLine("\nThank you for shopping with us, your checkout summary is below: ");
                             Console.WriteLine("\n******************************************************************");
@@ -124,13 +102,18 @@ namespace Lab3._2
                         }
                         else if (answer == "y")
                         {
-                            done = false;
+                            validAnswer = true;
+                        }
+
+                        else
+                        {
+                            Console.Write("Please only enter \"y\" or \"n\": ");
                         }
 
 
-
-
                     }
+
+
 
                 }
 
